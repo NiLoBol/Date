@@ -1,0 +1,32 @@
+
+{
+    "hello": "Hello",
+    "welcome": "Welcome to my app",
+    "Test": "Test",
+    "Layout": "Layout&Style",
+    "Connect": "Connect API",
+    "From": "Form & Table",
+    "MoveShape": "Move shape",
+    "MovePosition": "Move position",
+
+    "prefix":"prefix",
+    "firstname":"firstname",
+    "surname":"surname",
+    "birthday":"birthday",
+    "nationality":"nationality",
+    "IDcardnumber":"ID card number",
+    "mobilephonenumber":"mobile phone number",
+    "passport":"passport",
+    "expectedsalary":"expected salary",
+    "cleanup":"cleanup",
+    "sendinformation":"send information",
+    "deleteinformation":"delete information",
+    "name":"name",
+    "gender":"gender",
+    "phonenumber":"phone number",
+    "management":"management",
+    "selectall":"select all",
+    "age":"age",
+    "mainpage":"main page"
+}
+  

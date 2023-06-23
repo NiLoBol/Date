@@ -1,0 +1,78 @@
+body {
+  background: white;
+
+}
+#root {
+  height: 100vh;
+}
+a {
+  text-decoration: none !important;
+}
+.Buttonsmall,
+.Buttonsmall:hover,
+.Buttonsmall:visited {
+  background-color: #6eda78 !important;
+  color: #fff !important;
+  border-radius: 50px;
+  border: none;
+}
+.h100vh{
+  height: 100vh;
+  padding: 3rem;
+}
+.ms-300 {
+  margin-left: 316px;
+}
+.ant-card:hover:not(.nohovercolor) svg polygon,
+.ant-card:hover:not(.nohovercolor) svg circle,
+.ant-card:hover:not(.nohovercolor) svg rect,
+.ant-card:hover:not(.nohovercolor) svg ellipse {
+  fill: #fff;
+}
+
+.ant-card:hover {
+  background-color: #ffa200;
+  cursor: pointer;
+}
+.custom-link:hover .ant-card {
+  background-color: #fff;
+}
+.ant-card {
+  border: none;
+}
+.bordercard{
+  border: #b0b0b0 10px solid;
+  background-color: white;
+  border-radius: 50px;
+  width: 60%;
+}
+.red{
+  color: red;
+}
+.mt-60{
+  margin-top: 60px !important;
+}
+input.ant-input, .ant-select-selector,.ant-picker ,button.ant-btn{
+  border: #b0b0b0 10px solid !important;
+  background-color: white;
+  border-radius: 50px;
+}
+.ant-select-selector{
+  width: 100px;
+  height: 50px !important;
+}
+label{
+  margin-top: 10px;
+}
+
+
+button.ant-btn{
+  height: 50px !important;
+}
+button.ant-btn:hover{
+  background-color: #f1f1f1;
+  color: #000 !important;
+}
+.ant-select-selection-item{
+  padding: 0 !important;
+}
