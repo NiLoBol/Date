@@ -16,7 +16,7 @@ i18n.use(initReactI18next).init({
     en: { translation: enTranslation },
     th: { translation: thTranslation },
   },
-  lng: "en",
+  lng: "th",
   fallbackLng: "en",
   interpolation: { escapeValue: false },
 });
@@ -28,7 +28,7 @@ const App: React.FC = () => {
         <LanguageSwitcher />
         <Routes>
           <Route path="/" element={<Frompage />} />
-          <Route path="./Show" element={<ShowPage />} />
+          <Route path="/Show" element={<ShowPage />} />
         </Routes>
       </BrowserRouter>
   );

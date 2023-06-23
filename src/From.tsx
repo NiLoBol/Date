@@ -69,7 +69,7 @@ const FromDetail: React.FC = () => {
           <Col span={2}></Col>
           <Col span={10}>
             <Form.Item
-              label={t("firstname")}
+              label={t("name")}
               name="firstName"
               rules={[{ required: true, message: "กรุณากรอกชื่อ" }]}
             >

@@ -1,4 +1,3 @@
-
 import { useTranslation } from "react-i18next";
 
 import dayjs from "dayjs";
@@ -25,11 +24,14 @@ const ShowPage = () => {
     "พฤศจิกายน",
     "ธันวาคม",
   ];
-  function formatIdCard(idCard:string) {
-    const formattedId = `${idCard.slice(0, 1)}-${idCard.slice(1, 5)}-${idCard.slice(5, 10)}-${idCard.slice(10, 12)}-${idCard.slice(12)}`;
+  function formatIdCard(idCard: string) {
+    const formattedId = `${idCard.slice(0, 1)}-${idCard.slice(
+      1,
+      5
+    )}-${idCard.slice(5, 10)}-${idCard.slice(10, 12)}-${idCard.slice(12)}`;
     return formattedId;
   }
-  
+
   function calculateAge(
     birthDate: Date,
     currentDate: Date
@@ -62,37 +64,50 @@ const ShowPage = () => {
     month: "2-digit",
     year: "numeric",
   });
+  const Text: React.FC = () => {
+    if (age[0] > 65 || (age[1] >= 6 && age[0] === 0)||(age[0] >= 0 && age[0] < 2)||(age[1] == 0 && age[0] == 2)) {
+      console.log(age[0]+"ปี"+age[1]);
+      return <h1 className="green">สามารถเข้ารับบริการได้</h1>;
+    } else if (age[0] === 0 && age[1] < 6) {
+      return (
+        <h1>
+          <span className="red">ไม่สามารถเข้ารับบริการได้</span> เนื่องจากอายุต่ำกว่า 6 เดือน
+        </h1>
+      );
+    } else if (age[0] >= 2) {
+      return (
+        <h1>
+          <span className="red">ไม่สามารถเข้ารับบริการได้</span> เนื่องจากอายุจะครบ 65 ปี วันที่ {formattedDateParts[1]} เดือน {thaiMonths[parseInt(formattedDateParts[0]) - 1]} ปีที่ {(parseInt(formattedDateParts[2]) + 65)}
+        </h1>
+      );
+    }
+  
+    // Handle the case when none of the conditions are met
+    return null;
+  };
   
   const age = calculateAge(birthDate, thaiToday.toDate());
-  let management = "";
   const formattedDateParts = formattedDate.split("/");
-  if (age[0] > 65 || (age[1] >= 6 && age[0] <= 2)) {
-    management = "สามารถเข้ารับบริการได้";
-  } else if (age[0] === 0 && age[1] < 6) {
-    management = "ไม่สามารถเข้ารับบริการได้เนื่องจากอายุต่ำกว่า 6 เดือน";
-  } else if (age[0] >= 2) {
-    management =
-      "ไม่สามารถเข้ารับบริการได้เนื่องจากอายุจะครบ 65 ปี วันที่ " +
-      formattedDateParts[1] +
-      "เดือน " +
-      thaiMonths[parseInt(formattedDateParts[0]) - 1] +
-      " ปีที่ " +
-      (parseInt(formattedDateParts[2]) + 65);
-  }
+  
   return (
     <div className="h100vh d-flex justify-content-center align-item-center flex-column">
       <div className="bordercard p-5 w-50 mx-auto">
         <h1 className="text-center">
-          ชื่อ : {usedata.firstName} นามสกุล: {usedata.lastName}
+          {t("name")} : {usedata.firstName} {t("surname")}: {usedata.lastName}
         </h1>
-        <h1 className="text-center">บัตรประชาชน : {formatIdCard(usedata.IDcard)}</h1>
-        <h1 className="text-center">เพศ : {usedata.prefix}</h1>
         <h1 className="text-center">
-          วันเกิด : {formattedDateParts[1]}{" "}
-          {thaiMonths[parseInt(formattedDateParts[0]) - 1]}{" พ.ศ. "}
+          {t("IDcardnumber")} : {formatIdCard(usedata.IDcard)}
+        </h1>
+        <h1 className="text-center">
+          {t("gender")} : {usedata.prefix}
+        </h1>
+        <h1 className="text-center">
+          {t("gender")} : {formattedDateParts[1]}{" "}
+          {thaiMonths[parseInt(formattedDateParts[0]) - 1]}
+          {" พ.ศ. "}
           {formattedDateParts[2]}
         </h1>
-        <h1 className="text-center">management : {management}</h1>
+        <div className="text-center"><Text></Text></div>
       </div>
     </div>
   );
