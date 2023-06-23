@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
 
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
+import { Button } from "antd";
 const ShowPage = () => {
   const { t } = useTranslation();
   const storedData = localStorage.getItem("formData");
@@ -65,32 +67,53 @@ const ShowPage = () => {
     year: "numeric",
   });
   const Text: React.FC = () => {
-    if (age[0] > 65 || (age[1] >= 6 && age[0] === 0)||(age[0] >= 0 && age[0] < 2)||(age[1] == 0 && age[0] == 2)) {
-      console.log(age[0]+"ปี"+age[1]);
+    if (
+      age[0] > 65 ||
+      (age[1] >= 6 && age[0] === 0) ||
+      (age[0] >= 0 && age[0] < 2) ||
+      (age[1] == 0 && age[0] == 2)
+    ) {
+      console.log(age[0] + "ปี" + age[1]);
       return <h1 className="green">สามารถเข้ารับบริการได้</h1>;
     } else if (age[0] === 0 && age[1] < 6) {
       return (
         <h1>
-          <span className="red">ไม่สามารถเข้ารับบริการได้</span> เนื่องจากอายุต่ำกว่า 6 เดือน
+          <span className="red">ไม่สามารถเข้ารับบริการได้</span>{" "}
+          เนื่องจากอายุต่ำกว่า 6 เดือน
         </h1>
       );
     } else if (age[0] >= 2) {
       return (
         <h1>
-          <span className="red">ไม่สามารถเข้ารับบริการได้</span> เนื่องจากอายุจะครบ 65 ปี วันที่ {formattedDateParts[1]} เดือน {thaiMonths[parseInt(formattedDateParts[0]) - 1]} ปีที่ {(parseInt(formattedDateParts[2]) + 65)}
+          <span className="red">ไม่สามารถเข้ารับบริการได้</span>{" "}
+          เนื่องจากอายุจะครบ 65 ปี วันที่ {formattedDateParts[1]} เดือน{" "}
+          {thaiMonths[parseInt(formattedDateParts[0]) - 1]} ปีที่{" "}
+          {parseInt(formattedDateParts[2]) + 65}
         </h1>
       );
     }
-  
+
     // Handle the case when none of the conditions are met
     return null;
   };
-  
+
   const age = calculateAge(birthDate, thaiToday.toDate());
   const formattedDateParts = formattedDate.split("/");
-  
+
   return (
     <div className="h100vh d-flex justify-content-center align-item-center flex-column">
+      <Link to={"/"} >
+        <button type="button" className="btn btn-light mt-5 ms-5 position-absolute top-0 start-0 translate-middle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="1em"
+            viewBox="0 0 448 512"
+          >
+            <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+          </svg>
+        </button>
+      </Link>
+
       <div className="bordercard p-5 w-50 mx-auto">
         <h1 className="text-center">
           {t("name")} : {usedata.firstName} {t("surname")}: {usedata.lastName}
@@ -107,7 +130,9 @@ const ShowPage = () => {
           {" พ.ศ. "}
           {formattedDateParts[2]}
         </h1>
-        <div className="text-center"><Text></Text></div>
+        <div className="text-center">
+          <Text></Text>
+        </div>
       </div>
     </div>
   );

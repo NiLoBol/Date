@@ -45,7 +45,7 @@ const FromDetail: React.FC = () => {
     localStorage.setItem("formData", jsonData);
     // console.log(localStorage.getItem("formData"));
     
-      window.location.href = "./Show";
+      window.location.href = "/Show";
   };
   const disabledDate = (current: dayjs.Dayjs | null) => {
     dayjs.locale('th');
